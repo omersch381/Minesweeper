@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.afeka.sm.Minesweeper.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/HorizontalLinearLayoutHeight"
+           android:orientation="horizontal">
+       <TextView
+           android:id="@+id/NumOfFlags"
+           android:layout_width="@dimen/TextViewsWidth"
+           android:layout_height="match_parent"
+           android:padding="@dimen/TextViewsPaddingDist"
+           android:gravity="left"
+           android:textSize="@dimen/TextSize"
+           android:textStyle="bold"
+           android:layout_weight="@dimen/TextViewsWeight" />
+       <TextView
+           android:id="@+id/Level"
+           android:layout_width="@dimen/TextViewsWidth"
+           android:layout_height="match_parent"
+           android:textAlignment="gravity"
+           android:padding="@dimen/TextViewsPaddingDist"
+           android:gravity="center_horizontal"
+           android:textSize="@dimen/TextSize"
+           android:textStyle="bold"
+           android:layout_weight="@dimen/TextViewsWeight" />
+       <TextView
+           android:id="@+id/Timer"
+           android:layout_width="@dimen/TextViewsWidth"
+           android:layout_height="match_parent"
+           android:padding="@dimen/TextViewsPaddingDist"
+           android:gravity="end"
+           android:textSize="@dimen/TextSize"
+           android:textStyle="bold"
+           android:layout_weight="@dimen/TextViewsWeight"/>
+       </LinearLayout>
+
+        <GridView
+            android:id="@+id/gridView"
+            android:verticalSpacing="@dimen/GridSpacing"
+            android:horizontalSpacing="@dimen/GridSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/GridLayoutHeight"
+            android:layout_weight="@dimen/GridLayoutWeight" />
+    </LinearLayout>
+
+</RelativeLayout>

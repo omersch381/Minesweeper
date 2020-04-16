@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="easyLevelNumberSize">70sp</dimen>
+    <dimen name="mediumLevelNumberSize">45sp</dimen>
+    <dimen name="hardLevelNumberSize">35sp</dimen>
+    <dimen name="ButtonWidth">350dp</dimen>
+    <dimen name="ButtonHeight">70dp</dimen>
+    <dimen name="MarginHorizontal">0dp</dimen>
+    <dimen name="MarginVertical">200dp</dimen>
+    <dimen name="ButtonMarginEnd">200dp</dimen>
+    <dimen name="ButtonMarginBottom">250dp</dimen>
+    <dimen name="ButtonMarginTop">500dp</dimen>
+    <dimen name="TextSize">20sp</dimen>
+    <dimen name="HorizontalLinearLayoutHeight">125dp</dimen>
+    <dimen name="TextViewsWidth">70dp</dimen>
+    <dimen name="TextViewsPaddingDist">30dp</dimen>
+    <dimen name="TextViewsWeight">2</dimen>
+    <dimen name="GridSpacing">10dp</dimen>
+    <dimen name="GridLayoutHeight">10dp</dimen>
+    <dimen name="GridLayoutWeight">8</dimen>
+    <dimen name="EasyBoardSize">4</dimen>
+    <dimen name="MediumBoardSize">6</dimen>
+    <dimen name="HardBoardSize">8</dimen>
+    <dimen name="EasyLevel">1</dimen>
+    <dimen name="MediumLevel">2</dimen>
+    <dimen name="HardLevel">3</dimen>
+
+
+</resources>
