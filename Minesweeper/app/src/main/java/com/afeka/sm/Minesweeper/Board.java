@@ -155,7 +155,7 @@ public class Board {
         return numOfFlags;
     }
 
-    public void updateNumberOfFlags(int position) throws Exception {
+    public void updateNumberOfFlags(int position) {
         int col = position % size;
         int row = position / size;
         Tile currentTile = this.grid[row][col];

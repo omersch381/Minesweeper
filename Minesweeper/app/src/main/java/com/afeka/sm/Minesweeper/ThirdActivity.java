@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-
 import com.example.mineswipper.R;
 
 
@@ -19,7 +18,7 @@ public class ThirdActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second_main);
         Intent activity = getIntent();
         Win = activity.getExtras().getBoolean(GAME_RESULT);
-        if (Win == true) {
+        if (Win) {
             TextResult = findViewById(R.id.GameResult);
             TextResult.setText(R.string.Win);
         } else {

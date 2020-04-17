@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+
 import com.example.mineswipper.R;
 
 
@@ -63,11 +64,18 @@ public class TileAdapter extends BaseAdapter {
                 tileView.setBackgroundResource(R.drawable.red_mine);
                 break;
             default: // Digit
-                tileView.setBackgroundColor(tile.getBackgroundColor());
+                tileView.setBackgroundColor(setBackgroundColorByTileStatus(tile));
                 tileView.setText(tile.getShowToUser());
                 break;
         }
         return tileView;
+    }
+
+    private int setBackgroundColorByTileStatus(Tile tile) {
+        if (tile.isDiscovered())
+            return context.getResources().getColor(R.color.discoveredTile);
+        else
+            return context.getResources().getColor(R.color.undiscoveredTile);
     }
 
     @Override

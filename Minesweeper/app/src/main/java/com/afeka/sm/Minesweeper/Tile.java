@@ -30,7 +30,6 @@ public class Tile {
             return true;
         } else
             return false;
-
     }
 
     public void setStatus(char status) {
@@ -43,17 +42,13 @@ public class Tile {
             this.status = EMPTY;
     }
 
-    public boolean handleFlag() throws Exception {
-        if (isDiscovered)
-            throw new Exception(String.valueOf(R.string.TileAlreadyDiscoveredErrorMSG));
-        else {
-            if (hasFlag()) {
-                hasFlag = false;
-                setShowToUser(EMPTY);
-            } else {
-                hasFlag = true;
-                setShowToUser(FLAG);
-            }
+    public boolean handleFlag() {
+        if (hasFlag()) {
+            hasFlag = false;
+            setShowToUser(EMPTY);
+        } else {
+            hasFlag = true;
+            setShowToUser(FLAG);
         }
         return hasFlag;
     }
@@ -70,13 +65,6 @@ public class Tile {
             this.showToUser = showToUser;
         else //isDiscovered = true
             this.showToUser = status;
-    }
-
-    public int getBackgroundColor() {
-        if (isDiscovered)
-            return Color.BLACK;
-        else
-            return Color.GREEN;
     }
 
     public char getStatus() {

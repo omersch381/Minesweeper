@@ -12,26 +12,31 @@ import java.util.TimerTask;
 import com.example.mineswipper.R;
 
 public class SecondActivity extends AppCompatActivity {
-    final String WIN = "Win";
+    final String GAME_STATUS_PLAY = "play";
+    final String GAME_STATUS_WIN = "Win";
     final String LEVEL_ACTIVITY_KEY = "level Activity";
     final String GAME_RESULT = "GameResult";
-    boolean isFirstClick = false;
-    Game mGame;
-    GridView mGridView;
-    TileAdapter mTileAdapter;
+    final int EASY_LEVEL = 1;
+    final int MEDIUM_LEVEL = 2;
+
+    Game game;
+    GridView gridView;
+    TileAdapter tileAdapter;
     TextView numOfFlagsView;
     TextView levelView;
     TextView timerView;
-    int level;
+    Timer timer;
+    boolean haveTheUserClickedForTheFirstTime = false;
+    int timeSoFar;
+    int currentTime;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent activityCalled = getIntent();
         int level = activityCalled.getExtras().getInt(LEVEL_ACTIVITY_KEY);
-        mGame = new Game(level);
+        game = new Game(level);
         handleUpperLayout(level);
-        mTileAdapter = new TileAdapter(this, mGame.getBoard());
         handleGridView();
     }
 
@@ -42,17 +47,17 @@ public class SecondActivity extends AppCompatActivity {
 
     private void handleNumOfFlags() {
         numOfFlagsView = findViewById(R.id.NumOfFlags);
-        String numOfFlags = Integer.toString(mGame.getBoard().getNumberOfFlags());
+        String numOfFlags = Integer.toString(game.getBoard().getNumberOfFlags());
         numOfFlagsView.setText(numOfFlags);
     }
 
     private void handleLevelView(int level) {
         levelView = findViewById(R.id.Level);
         switch (level) {
-            case 1:
+            case EASY_LEVEL:
                 levelView.setText(R.string.EasyLevel);
                 break;
-            case 2:
+            case MEDIUM_LEVEL:
                 levelView.setText(R.string.MediumLevel);
                 break;
             default:
@@ -61,81 +66,91 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
 
-
     private void handleGridView() {
         timerView = findViewById(R.id.Timer);
-        mGridView = findViewById(R.id.gridView);
-        mGridView.setAdapter(mTileAdapter);
-        mGridView.setNumColumns(getNumOfColumnsByGivenLevel(level));
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView = findViewById(R.id.gridView);
+        tileAdapter = new TileAdapter(this, game.getBoard());
+        gridView.setAdapter(tileAdapter);
+        gridView.setNumColumns(game.getBoard().getSize());
+
+        handleShortClick();
+
+        handleLongClick();
+    }
+
+    private void handleShortClick() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (!isFirstClick) {
-                    isFirstClick = true;
+                if (!haveTheUserClickedForTheFirstTime) {
+                    haveTheUserClickedForTheFirstTime = true;
+                    timeSoFar = 0;
                     runTimer();
                 }
-                String result = mGame.playTile(position);
-                if (result == "Win")
-                    gameOverActivity(result);
-                else if (result == "Lose")
-                    gameOverActivity(result);
-
-                updateNumOfFlagsView(mGame.getBoard().getNumberOfFlags());
-                mTileAdapter.notifyDataSetChanged();
-            }
-
-            private void runTimer() {
-                class mineSweeperTimerTask extends TimerTask {
-                    private long firstClickTime = System.currentTimeMillis();
-
-                    @Override
-                    public void run() {
-                        runOnUiThread(new Runnable() {
-
-                            @Override
-                            public void run() {
-                                int seconds = (int) ((System.currentTimeMillis() - firstClickTime) / 1000);
-                                timerView.setText(String.format("%03d", seconds));
-                            }
-                        });
-                    }
-                }
-                Timer timer = new Timer();
-                timer.schedule(new mineSweeperTimerTask(), 0, 1000);
+                String result = game.playTile(position);
+                if (!result.equals(GAME_STATUS_PLAY)) // Which means the user has won or lost
+                    initiateGameOverActivity(result);
+                updateNumOfFlagsView(game.getBoard().getNumberOfFlags());
+                tileAdapter.notifyDataSetChanged();
             }
         });
-        mGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+    }
+
+    private void handleLongClick() { // put\remove a flag
+        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
-                try {
-                    mGame.getBoard().updateNumberOfFlags(position);
-                    mTileAdapter.notifyDataSetChanged();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                updateNumOfFlagsView(mGame.getBoard().getNumberOfFlags());
+                game.getBoard().updateNumberOfFlags(position);
+                tileAdapter.notifyDataSetChanged();
+                updateNumOfFlagsView(game.getBoard().getNumberOfFlags());
                 return true;
             }
         });
+    }
+
+    private void runTimer() {
+        timer = new Timer();
+        timer.schedule(new mineSweeperTimerTask(), 0, 1000);
+    }
+
+    class mineSweeperTimerTask extends TimerTask {
+        private long firstClickTime = System.currentTimeMillis();
+
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    currentTime = (int) ((System.currentTimeMillis() - firstClickTime) / 1000);
+                    timerView.setText(String.format("%03d", currentTime));
+                }
+            });
+        }
     }
 
     private void updateNumOfFlagsView(int numberOfFlags) {
         numOfFlagsView.setText(Integer.toString(numberOfFlags));
     }
 
-    public void gameOverActivity(String status) {
-        if (status == WIN) {
-            Intent intent = new Intent(this, ThirdActivity.class);
-            intent.putExtra(GAME_RESULT, true);
-            this.startActivity(intent);
-        } else {
-            Intent intent = new Intent(this, ThirdActivity.class);
-            intent.putExtra(GAME_RESULT, false);
-            this.startActivity(intent);
-        }
+    public void initiateGameOverActivity(String status) {
+        Intent intent = new Intent(this, ThirdActivity.class);
+        boolean hasWon = status.equals(GAME_STATUS_WIN);
+        intent.putExtra(GAME_RESULT, hasWon);
+        this.startActivity(intent);
     }
 
-    private int getNumOfColumnsByGivenLevel(int level) {
-        return mGame.getBoard().getSize();
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timeSoFar = currentTime;
+        timer.cancel();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (haveTheUserClickedForTheFirstTime) // so the timer will run only after the user clicks
+            runTimer();
     }
 }

@@ -16,7 +16,6 @@ public class Game {
         return status;
     }
 
-
     public Board getBoard() {
         return board;
     }

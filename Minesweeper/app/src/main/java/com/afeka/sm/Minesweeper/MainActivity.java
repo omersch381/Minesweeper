@@ -9,6 +9,7 @@ import com.example.mineswipper.R;
 
 
 public class MainActivity extends AppCompatActivity {
+    final String LEVEL_ACTIVITY_KEY = "level Activity";
     final int EASY = 1;
     final int MEDIUM = 2;
     final int HARD = 3;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 level = HARD;
                 break;
         }
-        getNameScreenIntent.putExtra("level Activity", level);
+        getNameScreenIntent.putExtra(LEVEL_ACTIVITY_KEY, level);
         startActivity(getNameScreenIntent);
     }
 }
