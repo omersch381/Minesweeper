@@ -3,7 +3,7 @@ package com.afeka.sm.Minesweeper;
 import android.graphics.Color;
 
 import com.example.mineswipper.R;
-
+ 
 public class Tile {
     final char MINE = 'X';
     final char EMPTY = ' ';
