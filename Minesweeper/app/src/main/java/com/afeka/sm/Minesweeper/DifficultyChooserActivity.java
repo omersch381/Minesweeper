@@ -8,7 +8,7 @@ import android.view.View;
 import com.example.mineswipper.R;
 
 
-public class MainActivity extends AppCompatActivity {
+public class DifficultyChooserActivity extends AppCompatActivity {
     final String LEVEL_ACTIVITY_KEY = "level Activity";
     final int EASY = 1;
     final int MEDIUM = 2;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startGame(View view) {
-        Intent getNameScreenIntent = new Intent(this, SecondActivity.class);
+        Intent getNameScreenIntent = new Intent(this, GameActivity.class);
         switch (view.getId()) {
             case R.id.Easy:
                 level = EASY;

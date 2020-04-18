@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BackgroundColor"
-    tools:context="com.afeka.sm.Minesweeper.MainActivity">
+    tools:context="com.afeka.sm.Minesweeper.DifficultyChooserActivity">
 
     <Button
         android:id="@+id/Easy"

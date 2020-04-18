@@ -3,14 +3,13 @@ package com.afeka.sm.Minesweeper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.example.mineswipper.R;
 
 
-public class ThirdActivity extends AppCompatActivity implements Finals {
+public class GameOverActivity extends AppCompatActivity implements Finals {
     TextView TextResult;
     boolean Win;
 
@@ -38,7 +37,7 @@ public class ThirdActivity extends AppCompatActivity implements Finals {
     }
 
     public void StartNewGame(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, DifficultyChooserActivity.class);
         this.startActivity(intent);
     }
 }

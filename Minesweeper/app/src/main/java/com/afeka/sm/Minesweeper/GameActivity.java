@@ -11,7 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import com.example.mineswipper.R;
 
-public class SecondActivity extends AppCompatActivity implements Finals {
+public class GameActivity extends AppCompatActivity implements Finals {
     Game game;
     GridView gridView;
     TileAdapter tileAdapter;
@@ -128,7 +128,7 @@ public class SecondActivity extends AppCompatActivity implements Finals {
     }
 
     public void initiateGameOverActivity(String status) {
-        Intent intent = new Intent(this, ThirdActivity.class);
+        Intent intent = new Intent(this, GameOverActivity.class);
         boolean hasWon = status.equals(GAME_STATUS_WIN);
         intent.putExtra(GAME_RESULT, hasWon);
         finishAffinity();

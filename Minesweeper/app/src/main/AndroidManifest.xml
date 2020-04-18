@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme"
         android:testOnly="false">
 
-        <activity android:name="com.afeka.sm.Minesweeper.MainActivity">
+        <activity android:name="com.afeka.sm.Minesweeper.DifficultyChooserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,13 +19,13 @@
         </activity>
 
         <activity
-            android:name="com.afeka.sm.Minesweeper.SecondActivity"
+            android:name="com.afeka.sm.Minesweeper.GameActivity"
             android:label="Mineswipper"
             android:theme="@style/AppTheme"
             />
 
         <activity
-            android:name="com.afeka.sm.Minesweeper.ThirdActivity"
+            android:name="com.afeka.sm.Minesweeper.GameOverActivity"
             android:label="MineSwipper"
             android:theme="@style/AppTheme" />
     </application>
