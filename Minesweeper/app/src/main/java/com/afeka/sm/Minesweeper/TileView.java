@@ -1,7 +1,6 @@
 package com.afeka.sm.Minesweeper;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import com.example.mineswipper.R;
 
 
 public class TileView extends LinearLayout {
-    final int TEXT_COLOR = Color.RED;
     TextView mTextView;
 
     public TileView(Context context) {
@@ -25,7 +23,7 @@ public class TileView extends LinearLayout {
         mTextView.setLayoutParams(layoutParams);
         mTextView.setTextAlignment(TEXT_ALIGNMENT_CENTER);
         mTextView.setGravity(Gravity.CENTER);
-        mTextView.setTextColor(TEXT_COLOR);
+        mTextView.setTextColor(context.getResources().getColor(R.color.ExitButtonColor)); // Red;
         addView(mTextView);
     }
 
@@ -36,13 +34,13 @@ public class TileView extends LinearLayout {
     public void setFontSize(int level) {
         switch (level) {
             case 1:
-                mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.easyLevelNumberSize));
+                mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.EasyLevelNumberSize));
                 break;
             case 2:
-                mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.mediumLevelNumberSize));
+                mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.MediumLevelNumberSize));
                 break;
             default:
-                mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.hardLevelNumberSize));
+                mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.HardLevelNumberSize));
                 break;
         }
     }

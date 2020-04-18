@@ -11,14 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import com.example.mineswipper.R;
 
-public class SecondActivity extends AppCompatActivity {
-    final String GAME_STATUS_PLAY = "play";
-    final String GAME_STATUS_WIN = "Win";
-    final String LEVEL_ACTIVITY_KEY = "level Activity";
-    final String GAME_RESULT = "GameResult";
-    final int EASY_LEVEL = 1;
-    final int MEDIUM_LEVEL = 2;
-
+public class SecondActivity extends AppCompatActivity implements Finals {
     Game game;
     GridView gridView;
     TileAdapter tileAdapter;
@@ -32,7 +25,7 @@ public class SecondActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.game_layout);
         Intent activityCalled = getIntent();
         int level = activityCalled.getExtras().getInt(LEVEL_ACTIVITY_KEY);
         game = new Game(level);
@@ -41,14 +34,15 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void handleUpperLayout(int level) {
-        handleNumOfFlags();
+        handleNumOfFlagsView();
         handleLevelView(level);
     }
 
-    private void handleNumOfFlags() {
+    private void handleNumOfFlagsView() {
         numOfFlagsView = findViewById(R.id.NumOfFlags);
         String numOfFlags = Integer.toString(game.getBoard().getNumberOfFlags());
-        numOfFlagsView.setText(numOfFlags);
+        String numOfFlagsLabel = getResources().getString(R.string.NumOfFlags);
+        numOfFlagsView.setText(String.format("%s %s",numOfFlagsLabel, numOfFlags));
     }
 
     private void handleLevelView(int level) {
@@ -68,7 +62,7 @@ public class SecondActivity extends AppCompatActivity {
 
     private void handleGridView() {
         timerView = findViewById(R.id.Timer);
-        gridView = findViewById(R.id.gridView);
+        gridView = findViewById(R.id.GridView);
         tileAdapter = new TileAdapter(this, game.getBoard());
         gridView.setAdapter(tileAdapter);
         gridView.setNumColumns(game.getBoard().getSize());
@@ -122,21 +116,22 @@ public class SecondActivity extends AppCompatActivity {
 
                 @Override
                 public void run() {
-                    currentTime = (int) ((System.currentTimeMillis() - firstClickTime) / 1000);
-                    timerView.setText(String.format("%03d", currentTime));
+                    currentTime = (int) ((System.currentTimeMillis() - firstClickTime) / 1000 + timeSoFar);
+                    timerView.setText(String.format("Timer:\n  %03d", currentTime));
                 }
             });
         }
     }
 
     private void updateNumOfFlagsView(int numberOfFlags) {
-        numOfFlagsView.setText(Integer.toString(numberOfFlags));
+        numOfFlagsView.setText("Num Of Flags: " + Integer.toString(numberOfFlags));
     }
 
     public void initiateGameOverActivity(String status) {
         Intent intent = new Intent(this, ThirdActivity.class);
         boolean hasWon = status.equals(GAME_STATUS_WIN);
         intent.putExtra(GAME_RESULT, hasWon);
+        finishAffinity();
         this.startActivity(intent);
     }
 

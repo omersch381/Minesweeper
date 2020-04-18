@@ -2,21 +2,7 @@ package com.afeka.sm.Minesweeper;
 
 import java.util.Random;
 
-public class Board {
-
-    final char MINE = 'X';
-    final char EMPTY = ' ';
-    final char RED_MINE = 'R';
-    final String GAME_STATUS_PLAY = "play";
-    final String GAME_STATUS_WIN = "Win";
-    final String GAME_STATUS_LOSE = "Lose";
-    final int EASY_LEVEL = 1;
-    final int MEDIUM_LEVEL = 2;
-    final static int BOARD_MINES_RATIO = 7;
-    final int EASY_BOARD_SIZE = 4;
-    final int MEDIUM_BOARD_SIZE = 6;
-    final int HARD_BOARD_SIZE = 8;
-
+public class Board implements Finals{
     private Tile[][] grid;
     private int numOfFlags;
     private int size;
@@ -128,7 +114,7 @@ public class Board {
     private void discoverTilesRecursivelyFromGivenIndex(int row, int col) {
         Tile currentTile = this.grid[row][col];
         if (currentTile.hasFlag())
-            numOfFlags++;
+            numOfFlags++; // We discover the Tile so we return the flag
         currentTile.setDiscovered();
         if (!isEmpty(currentTile))
             return;

@@ -10,10 +10,7 @@ import android.widget.GridView;
 import com.example.mineswipper.R;
 
 
-public class TileAdapter extends BaseAdapter {
-    final char MINE = 'X';
-    final char FLAG = 'F';
-    final char RED_MINE = 'R';
+public class TileAdapter extends BaseAdapter implements Finals{
     private Board board;
     private Context context;
 

@@ -4,11 +4,7 @@ import android.graphics.Color;
 
 import com.example.mineswipper.R;
  
-public class Tile {
-    final char MINE = 'X';
-    final char EMPTY = ' ';
-    final char FLAG = 'F';
-    final char RED_MINE = 'R';
+public class Tile implements Finals{
     private boolean isDiscovered;
     private boolean hasFlag;
     private boolean hasMine;

@@ -3,44 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.afeka.sm.Minesweeper.SecondActivity">
+    android:background="@color/BackgroundColor"
+    tools:context="com.afeka.sm.Minesweeper.MainActivity">
 
     <Button
         android:id="@+id/Easy"
         android:layout_width="@dimen/ButtonWidth"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginHorizontal="@dimen/MarginHorizontal"
         android:layout_marginVertical="@dimen/MarginVertical"
-        android:layout_marginTop="@dimen/ButtonMarginTop"
-        android:background="@color/colorAccent"
-        android:onClick="StartGame"
+        android:background="@color/ButtonColor"
+        android:onClick="startGame"
         android:text="@string/Easy"
-        android:textAlignment="center" />
+        />
 
     <Button
         android:id="@+id/Medium"
         android:layout_width="@dimen/ButtonWidth"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginHorizontal="@dimen/MarginHorizontal"
-        android:layout_marginVertical="@dimen/MarginVertical"
-        android:background="@color/colorAccent"
-        android:onClick="StartGame"
+        android:background="@color/ButtonColor"
+        android:onClick="startGame"
         android:text="@string/Medium"
-        android:textAlignment="center" />
+         />
 
     <Button
         android:id="@+id/Hard"
         android:layout_width="@dimen/ButtonWidth"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="@dimen/MarginHorizontal"
+        android:layout_centerInParent="true"
         android:layout_marginVertical="@dimen/MarginVertical"
-        android:layout_marginBottom="@dimen/ButtonMarginBottom"
-        android:background="@color/colorAccent"
-        android:onClick="StartGame"
+        android:background="@color/ButtonColor"
+        android:onClick="startGame"
         android:text="@string/Hard"
-        android:textAlignment="center" />
+        />
 </RelativeLayout>

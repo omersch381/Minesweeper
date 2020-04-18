@@ -8,7 +8,6 @@ public class Game {
         board = new Board(level);
     }
 
-
     public String playTile(int position) {
         int col = position % board.getSize();
         int row = position / board.getSize();

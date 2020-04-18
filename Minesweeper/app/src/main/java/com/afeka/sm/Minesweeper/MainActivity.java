@@ -18,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.first_layout);
+        setContentView(R.layout.difficulty_chooser_layout);
     }
 
-    public void StartGame(View view) {
+    public void startGame(View view) {
         Intent getNameScreenIntent = new Intent(this, SecondActivity.class);
         switch (view.getId()) {
             case R.id.Easy:
