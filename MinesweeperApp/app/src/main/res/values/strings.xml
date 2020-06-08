@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Minesweeper</string>
+    <string name="EasyLevel">Level: Easy</string>
+    <string name="MediumLevel">Level: Medium</string>
+    <string name="HardLevel">Level: Hard</string>
+    <string name="Easy">Level: Easy</string>
+    <string name="Medium">Level: Medium</string>
+    <string name="Hard">Level: Hard</string>
+    <string name="StartNew">Start New Game</string>
+    <string name="Win">"Well done, you won"</string>
+    <string name="Lose">"Not this time, you lost"</string>
+    <string name="TileAlreadyDiscoveredErrorMSG">"Tile is already discovered!!Can't put flag!!"</string>
+    <string name="ExitApp">Exit App</string>
+    <string name="NumOfFlags">Num Of Flags: </string>
+
+    <string name="Highlights">Highlights: </string>
+    <string name="Time"> time:</string>
+
+    <string name="IsFirstTime">True</string>
+
+    <string name="PleaseEnterYourName">Please Enter Your Name</string>
+    <string name="ConfirmationButton">OK</string>
+    <string name="SavedConfirmation">Saved</string>
+    <string name="CongratulationsMessage">Congratulations you have broken a new record</string>
+    <string name="please_revert_the_phone_to_the_initial_position">Please revert the phone to the initial position!!!!</string>
+</resources>

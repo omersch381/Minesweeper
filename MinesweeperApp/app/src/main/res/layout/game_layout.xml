@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFAFA"
+    tools:context="com.afeka.sm.Minesweeper.DifficultyChooserActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/HorizontalLinearLayoutHeight"
+           android:orientation="horizontal">
+       <TextView
+           android:id="@+id/NumOfFlags"
+           android:layout_width="@dimen/TextViewsWidth"
+           android:layout_height="match_parent"
+           android:padding="@dimen/TextViewsPaddingDist"
+           android:textSize="@dimen/TextSize"
+           android:textStyle="bold"
+           android:layout_weight="@dimen/TextViewsWeight" />
+       <TextView
+           android:id="@+id/Level"
+           android:layout_width="@dimen/TextViewsWidth"
+           android:layout_height="match_parent"
+           android:padding="@dimen/TextViewsPaddingDist"
+           android:textSize="@dimen/TextSize"
+           android:textStyle="bold"
+           android:layout_weight="@dimen/TextViewsWeight" />
+       <TextView
+           android:id="@+id/Timer"
+           android:layout_width="@dimen/TextViewsWidth"
+           android:layout_height="match_parent"
+           android:padding="@dimen/TextViewsPaddingDist"
+           android:textSize="@dimen/TextSize"
+           android:textStyle="bold"
+           android:layout_weight="@dimen/TextViewsWeight"/>
+       </LinearLayout>
+
+        <GridView
+            android:id="@+id/GridView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/GridLayoutHeight"
+            android:layout_weight="@dimen/GridLayoutWeight"
+            android:horizontalSpacing="@dimen/GridSpacing"
+            android:verticalSpacing="@dimen/GridSpacing" />
+        <TextView
+            android:id="@+id/AlarmMessage"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:padding="@dimen/TextViewsPaddingDist"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_weight="@dimen/TextViewsWeight"
+            android:text="@string/please_revert_the_phone_to_the_initial_position"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

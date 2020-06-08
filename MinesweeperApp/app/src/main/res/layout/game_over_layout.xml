@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFAFA"
+    android:id="@+id/gameOverScreen"
+    tools:context="com.afeka.sm.Minesweeper.GameOverActivity">
+
+    <TextView
+        android:id="@+id/GameResult"
+        android:layout_width="@dimen/TextViewsWidth"
+        android:layout_height="@dimen/ButtonHeight"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/MarginStart"
+        android:textAlignment="center"
+        android:textSize="@dimen/TextSize" />
+
+    <Button
+        android:id="@+id/ExitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:backgroundTint="@color/ExitButtonColor"
+        android:text="@string/ExitApp" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:backgroundTint="@color/StartNewGameButtonColor"
+        android:onClick="StartNewGame"
+        android:text="@string/StartNew"
+        />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginEnd="200dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/Animation_container"
+        android:animateLayoutChanges="true"
+        >
+    </FrameLayout>
+</RelativeLayout>
